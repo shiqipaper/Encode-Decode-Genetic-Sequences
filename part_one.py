@@ -11,9 +11,7 @@ def driver():
     ]
 
     categorized_sequences = {}
-    categorized_sequences["undetermined"] = [] # strands that can't be determined
-    categorized_sequences["dna"] = [] # dna strands
-    categorized_sequences["rna"] = [] # rna strands
+
 
     for sequence in all_sequences:
         category = categorize_strand(sequence)
@@ -73,6 +71,10 @@ def encode_strand(strand):
             new_entry = strand[index - 1] + str(count)
             encoding.append(new_entry)
             count = 1
+        if index == len(strand) - 1:
+            new_entry = strand[index] + str(count)
+            encoding.append(new_entry)
+        
 
     return "".join(encoding)
 
